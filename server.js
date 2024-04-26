@@ -4,6 +4,8 @@ require('dotenv').config();
 const conn = require("./config/dbConfig");
 const bodyParser = require("body-parser");
 const userRoute = require("./Route/UserRoute.js");
+const categoryRoute = require("./Route/category.js");
+const productRoute = require("./Route/product.js");
 const createTableQuery = require("./config/table.js");
 
 // conn.query(createTableQuery, (err, result) => {
@@ -19,6 +21,8 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use("/user",userRoute)
+app.use("/category",categoryRoute)
+app.use("/product",productRoute)
 
 app.listen(4000,(req,res,next)=>{
     console.log("SERVER CREATED SUCCESSFULLY");
